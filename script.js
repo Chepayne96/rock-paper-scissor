@@ -1,3 +1,7 @@
+const playerPoints = document.querySelector('.playerScore');
+const computerPoints = document.querySelector('.computerScore');
+const displayWinner = document.querySelector('.winnerDisplay');
+
 function getComputerChoice() {
     let randInt = Math.floor(Math.random() * 10 % 3);
     if (randInt === 0) {
@@ -9,44 +13,45 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    return prompt("Please select choice ").toLowerCase();
-}
-
 let playerScore = 0;
 let computerScore = 0;
 
-function playRound() {
+function playRound (btn) {
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
+    let humanChoice = btn.textContent;
     if (computerChoice === humanChoice) {
         console.log("Tie");
     } else if (computerChoice === "rock" && humanChoice === "paper") {
         console.log("Human Wins");
         playerScore++;
+        updateScore()
     } else if (computerChoice === "paper" && humanChoice === "scissor") {
         console.log("Human Wins");
         playerScore++;
+        updateScore()
     } else if (computerChoice === "scissor" && humanChoice === "rock") {
         console.log("Human Wins");
         playerScore++;
+        updateScore()
     } else {
         console.log("Computer Wins");
         computerScore++;
+        updateScore()
+    };
+    if (playerScore === 5) {
+        displayWinner.textContent = 'Player Wins';
+    } else if (computerScore === 5) {
+        displayWinner.textContent = 'Computer Wins';
     }
 }
 
-
-
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    }
-    if (playerScore > computerScore) {
-        console.log("Human Wins Game");
-    } else {
-        console.log("Computer Wins Game");
-    }
+function updateScore() {
+    playerPoints.textContent = playerScore;
+    computerPoints.textContent = computerScore;
 }
 
-playGame()
+function clearRound() {
+    playerPoints.textContent = '';
+    computerPoints.textContent = '';
+    displayWinner.textContent = '';
+}

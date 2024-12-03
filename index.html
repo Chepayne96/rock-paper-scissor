@@ -3,10 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <h1 class="header">R-P-S Showdown</h1>
+    <div class="playChoices">
+        <button onclick="playRound(this)">rock</button>
+        <button onclick="playRound(this)">paper</button>
+        <button onclick="playRound(this)">scissor</button>
+    </div>
+
+    <div class="display">
+        <div class="winnerDisplay">
+            
+        </div>
+        <div class="scoreBoard">
+            <label for="playerScore">Player Score</label>
+            <div class="playerScore"></div>
+            <label for="computerScore">Computer Score</label>
+            <div class="computerScore"></div>
+        </div>
+    </div>
 </body>
 </html>
